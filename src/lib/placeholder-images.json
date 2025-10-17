@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A stylish and modern salon interior",
+      "imageUrl": "https://picsum.photos/seed/salon-interior/1200/800",
+      "imageHint": "salon interior"
+    },
+    {
+      "id": "staff1",
+      "description": "A friendly hairstylist smiling",
+      "imageUrl": "https://picsum.photos/seed/hairstylist1/100/100",
+      "imageHint": "hairstylist portrait"
+    },
+    {
+      "id": "staff2",
+      "description": "A professional barber posing",
+      "imageUrl": "https://picsum.photos/seed/barber/100/100",
+      "imageHint": "barber portrait"
+    },
+    {
+      "id": "staff3",
+      "description": "An esthetician ready for a client",
+      "imageUrl": "https://picsum.photos/seed/esthetician/100/100",
+      "imageHint": "esthetician portrait"
+    },
+    {
+      "id": "gallery1",
+      "description": "A woman with a fresh haircut",
+      "imageUrl": "https://picsum.photos/seed/haircut-woman/400/500",
+      "imageHint": "haircut style"
+    },
+    {
+      "id": "gallery2",
+      "description": "Detailed nail art on a client's hands",
+      "imageUrl": "https://picsum.photos/seed/nail-art/400/500",
+      "imageHint": "nail art"
+    },
+    {
+      "id": "gallery3",
+      "description": "A man receiving a relaxing facial treatment",
+      "imageUrl": "https://picsum.photos/seed/facial-spa/400/500",
+      "imageHint": "facial spa"
+    },
+    {
+      "id": "gallery4",
+      "description": "A bride with elegant wedding makeup",
+      "imageUrl": "https://picsum.photos/seed/wedding-makeup/400/500",
+      "imageHint": "wedding makeup"
+    }
+  ]
 }
