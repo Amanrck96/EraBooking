@@ -1,4 +1,5 @@
 
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ import { services } from "@/lib/data";
 import { ArrowRight, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
+const instagramGalleryImage = PlaceHolderImages.find(p => p.id === 'gallery-instagram');
 
 const testimonials = [
   { name: "Priya S.", quote: "Absolutely love my new haircut! The staff is so talented and friendly. Best salon in town!", avatar: "https://picsum.photos/seed/priya/40/40" },
@@ -18,10 +20,10 @@ const testimonials = [
 ];
 
 const socialLinks = [
-    { platform: "Instagram", url: "https://www.instagram.com/eraunisexsalon/p/C8_Z_2_y3EH/embed/", icon: <Instagram className="h-8 w-8" /> },
-    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Feraunisexsalon%2Fposts%2Fpfbid024gYJg3L8iNfS7W1Xw2gG4w4c6zZ5hY5XbFqP7N3E6fBvDkKj9vWjE9xY8zJjJgJl", icon: <Facebook className="h-8 w-8" /> },
-    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1216105823156682", icon: <Facebook className="h-8 w-8" /> },
-    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1932323127516511", icon: <Facebook className="h-8 w-8" /> },
+    { platform: "Instagram", url: "https://www.instagram.com/eraunisexsalon/p/C8_Z_2_y3EH/", icon: <Instagram className="h-8 w-8" />, type: "link" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Feraunisexsalon%2Fposts%2Fpfbid024gYJg3L8iNfS7W1Xw2gG4w4c6zZ5hY5XbFqP7N3E6fBvDkKj9vWjE9xY8zJjJgJl", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1216105823156682", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1932323127516511", icon: <Facebook className="h-8 w-8" />, type: "embed" },
 ];
 
 export default function Home() {
@@ -140,12 +142,27 @@ const GallerySection = () => (
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {socialLinks.map((link, index) => (
             <div key={index} className="group relative aspect-[4/5] w-full overflow-hidden rounded-lg shadow-lg">
-                <iframe 
-                    src={link.url}
-                    className="w-full h-full border-none overflow-hidden"
-                    allowFullScreen={true}
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                ></iframe>
+                {link.type === 'embed' ? (
+                    <iframe 
+                        src={link.url}
+                        className="w-full h-full border-none overflow-hidden"
+                        allowFullScreen={true}
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    ></iframe>
+                ) : (
+                    instagramGalleryImage && (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                             <Image
+                                src={instagramGalleryImage.imageUrl}
+                                alt={instagramGalleryImage.description}
+                                data-ai-hint={instagramGalleryImage.imageHint}
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+                        </a>
+                    )
+                )}
                  <div className="absolute top-2 left-2 flex items-center gap-2 bg-background/80 text-foreground p-1 rounded-md">
                   {link.icon}
                 </div>

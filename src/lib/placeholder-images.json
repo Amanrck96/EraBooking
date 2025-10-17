@@ -37,10 +37,10 @@
       "imageHint": "nail art"
     },
     {
-      "id": "gallery3",
-      "description": "A man receiving a relaxing facial treatment",
-      "imageUrl": "https://picsum.photos/seed/facial-spa/400/500",
-      "imageHint": "facial spa"
+      "id": "gallery-instagram",
+      "description": "An instagram post from the salon",
+      "imageUrl": "https://picsum.photos/seed/instagram-post/400/500",
+      "imageHint": "salon post"
     },
     {
       "id": "gallery4",
