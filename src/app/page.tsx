@@ -20,10 +20,14 @@ const testimonials = [
 ];
 
 const socialLinks = [
-    { platform: "Instagram", url: "https://www.instagram.com/eraunisexsalon/p/C8_Z_2_y3EH/", icon: <Instagram className="h-8 w-8" />, type: "link" },
-    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Feraunisexsalon%2Fposts%2Fpfbid024gYJg3L8iNfS7W1Xw2gG4w4c6zZ5hY5XbFqP7N3E6fBvDkKj9vWjE9xY8zJjJgJl", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Instagram", url: "https://www.instagram.com/eraunisexsalon/", icon: <Instagram className="h-8 w-8" />, type: "link" },
     { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1216105823156682", icon: <Facebook className="h-8 w-8" />, type: "embed" },
     { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1932323127516511", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F759824040138698", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3783782231919786", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122136039470919677", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122096267750919677", icon: <Facebook className="h-8 w-8" />, type: "embed" },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D122096173706919677", icon: <Facebook className="h-8 w-8" />, type: "embed" },
 ];
 
 export default function Home() {
