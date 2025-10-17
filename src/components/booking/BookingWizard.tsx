@@ -57,8 +57,16 @@ export function BookingWizard() {
     // Here you would typically call an API to save the booking
     
     if (bookingData.customer.email) {
+      const { service, ...restOfBookingData } = bookingData;
+      const { icon, ...restOfService } = service || {};
+      
+      const serializableBookingData = {
+        ...restOfBookingData,
+        service: service ? restOfService : null,
+      };
+
       const emailInput = {
-        bookingDetails: bookingData,
+        bookingDetails: serializableBookingData,
         customerEmail: bookingData.customer.email,
         salonEmail: "eraunisexsalon@gmail.com", // Salon's email
       };
