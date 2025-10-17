@@ -6,13 +6,21 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle2, CalendarPlus, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 
 export default function ConfirmationPage() {
   const [bookingId, setBookingId] = useState('');
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    setBookingId(Math.random().toString(36).substring(2, 10).toUpperCase());
-  }, []);
+    const id = searchParams.get('bookingId');
+    if (id) {
+      setBookingId(id);
+    } else {
+      // Fallback for direct navigation
+      setBookingId(Math.random().toString(36).substring(2, 10).toUpperCase());
+    }
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen bg-secondary flex items-center justify-center p-4">

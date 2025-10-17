@@ -55,7 +55,8 @@ export function BookingWizard() {
     console.log("Final Booking Data:", bookingData);
     
     // Here you would typically call an API to save the booking
-    
+    const bookingId = Math.random().toString(36).substring(2, 10).toUpperCase();
+
     if (bookingData.customer.email) {
       const { service, ...restOfBookingData } = bookingData;
       const { icon, ...restOfService } = service || {};
@@ -63,6 +64,7 @@ export function BookingWizard() {
       const serializableBookingData = {
         ...restOfBookingData,
         service: service ? restOfService : null,
+        bookingId,
       };
 
       const emailInput = {
@@ -81,7 +83,7 @@ export function BookingWizard() {
       }
     }
     
-    router.push("/book/confirmation");
+    router.push(`/book/confirmation?bookingId=${bookingId}`);
   };
 
   const renderStep = () => {

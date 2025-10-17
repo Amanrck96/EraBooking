@@ -37,6 +37,7 @@ const prompt = ai.definePrompt({
   prompt: `You are an email sending service. You are sending a booking confirmation email.
   
   Booking Details:
+  Booking ID: {{bookingDetails.bookingId}}
   Service: {{bookingDetails.service.name}}
   Staff: {{bookingDetails.staff.name}}
   Date: {{bookingDetails.date}}
