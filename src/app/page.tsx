@@ -42,7 +42,7 @@ const Header = () => (
     <div className="container flex h-14 items-center">
       <div className="mr-4 flex items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2.82l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l-.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0-2.82l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <svg role="img" viewBox="0 0 24 24" className="h-8 w-8 text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Era Unisex Salon</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.42 0 9.818 4.398 9.818 9.818S17.42 21.818 12 21.818 2.182 17.42 2.182 12 6.58 2.182 12 2.182zm-2.909 3.83v1.84h5.818V6.012H9.091zm-1.03 2.759v8.4H10.8v-2.315h2.4v2.315h2.727v-8.4h-2.727v2.315h-2.4V8.77h-1.637zm1.03 3.23h1.637v2.314H8.061v-2.315z"></path></svg>
           <span className="font-bold">Era Booking</span>
         </Link>
       </div>
@@ -212,7 +212,7 @@ const Footer = () => (
               <a href="https://instagram.com/eraunisexsalon" target="_blank" rel="noopener noreferrer"><Instagram className="h-5 w-5" /></a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://facebook.com/reel/1216105823156682" target="_blank" rel="noopener noreferrer"><Facebook className="h-5 w-5" /></a>
+              <a href="https://www.facebook.com/photo.php?fbid=122136039470919677" target="_blank" rel="noopener noreferrer"><Facebook className="h-5 w-5" /></a>
             </Button>
           </div>
         </div>
