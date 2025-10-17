@@ -221,7 +221,7 @@ const Footer = () => (
               <Phone className="h-4 w-4" /> <a href="tel:+919474903069">+91 94749 03069</a>
             </li>
             <li className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-              <Mail className="h-4 w-4" /> <a href="mailto:eraunisexsalon@gmail.com">eraunisexsalon@gmail.com</a>
+              <Mail className="h-4 w-4" /> <a href="mailto:amanrck96@gmail.com">amanrck96@gmail.com</a>
             </li>
             <li className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
               <MapPin className="h-4 w-4" /> Cooch Behar, India

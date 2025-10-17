@@ -70,7 +70,7 @@ export function BookingWizard() {
       const emailInput = {
         bookingDetails: serializableBookingData,
         customerEmail: bookingData.customer.email,
-        salonEmail: "eraunisexsalon@gmail.com", // Salon's email
+        salonEmail: "amanrck96@gmail.com", // Salon's email
       };
       const result = await sendConfirmationEmail(emailInput);
       if (!result.success) {
