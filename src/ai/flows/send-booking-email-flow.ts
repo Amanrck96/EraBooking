@@ -10,7 +10,6 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import {BookingData} from '@/lib/types';
-import { time } from 'console';
 
 const SendBookingEmailInputSchema = z.object({
     bookingDetails: z.any().describe('The booking details.'),
