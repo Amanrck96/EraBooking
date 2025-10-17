@@ -12,6 +12,8 @@ import BookingSummary from "@/components/booking/BookingSummary";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
+import { sendConfirmationEmail } from "@/app/actions";
+import { useToast } from "@/hooks/use-toast";
 
 const steps = ["Service", "Staff", "Date & Time", "Details", "Confirm"];
 
@@ -25,6 +27,7 @@ export function BookingWizard() {
     customer: { name: "", email: "", phone: "", notes: "" },
   });
   const router = useRouter();
+  const { toast } = useToast();
 
   const updateBookingData = (data: Partial<BookingData>) => {
     setBookingData((prev) => ({ ...prev, ...data }));
@@ -48,9 +51,28 @@ export function BookingWizard() {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("Final Booking Data:", bookingData);
+    
     // Here you would typically call an API to save the booking
+    
+    if (bookingData.customer.email) {
+      const emailInput = {
+        bookingDetails: bookingData,
+        customerEmail: bookingData.customer.email,
+        salonEmail: "eraunisexsalon@gmail.com", // Salon's email
+      };
+      const result = await sendConfirmationEmail(emailInput);
+      if (!result.success) {
+        toast({
+          variant: "destructive",
+          title: "Email Error",
+          description: result.error || "Could not send confirmation email.",
+        });
+        // We can still proceed to confirmation page even if email fails
+      }
+    }
+    
     router.push("/book/confirmation");
   };
 
