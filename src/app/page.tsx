@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,17 +10,18 @@ import { services } from "@/lib/data";
 import { ArrowRight, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
-const galleryImages = [
-  PlaceHolderImages.find(p => p.id === 'gallery1'),
-  PlaceHolderImages.find(p => p.id === 'gallery2'),
-  PlaceHolderImages.find(p => p.id === 'gallery3'),
-  PlaceHolderImages.find(p => p.id === 'gallery4'),
-].filter(Boolean) as any[];
 
 const testimonials = [
   { name: "Priya S.", quote: "Absolutely love my new haircut! The staff is so talented and friendly. Best salon in town!", avatar: "https://picsum.photos/seed/priya/40/40" },
   { name: "Rohan M.", quote: "Great experience. Professional service and a very relaxing atmosphere. I'll definitely be back for the beard grooming.", avatar: "https://picsum.photos/seed/rohan/40/40" },
   { name: "Anjali K.", quote: "My bridal makeup was flawless and lasted all night. They made me feel like a princess on my wedding day!", avatar: "https://picsum.photos/seed/anjali/40/40" },
+];
+
+const socialLinks = [
+    { platform: "Instagram", url: "https://www.instagram.com/eraunisexsalon/p/C8_Z_2_y3EH/embed/", icon: <Instagram className="h-8 w-8" /> },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Feraunisexsalon%2Fposts%2Fpfbid024gYJg3L8iNfS7W1Xw2gG4w4c6zZ5hY5XbFqP7N3E6fBvDkKj9vWjE9xY8zJjJgJl", icon: <Facebook className="h-8 w-8" /> },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1216105823156682", icon: <Facebook className="h-8 w-8" /> },
+    { platform: "Facebook", url: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1932323127516511", icon: <Facebook className="h-8 w-8" /> },
 ];
 
 export default function Home() {
@@ -68,8 +70,8 @@ const HeroSection = () => (
       />
     )}
     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
-    <div className="absolute inset-0 flex items-center justify-center text-center">
-      <div className="relative p-4">
+    <div className="relative z-10 flex items-center justify-center text-center h-full">
+      <div className="p-4">
         <h1 className="text-4xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl">
           Era Unisex Salon
         </h1>
@@ -129,30 +131,30 @@ const ServicesSection = () => (
 );
 
 const GallerySection = () => (
-  <section className="bg-secondary py-16 sm:py-24">
-    <div className="container">
-      <div className="text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Work</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">A glimpse into the transformations we create.</p>
+    <section className="bg-secondary py-16 sm:py-24">
+      <div className="container">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Work</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">A glimpse into the transformations we create.</p>
+        </div>
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {socialLinks.map((link, index) => (
+            <div key={index} className="group relative aspect-[4/5] w-full overflow-hidden rounded-lg shadow-lg">
+                <iframe 
+                    src={link.url}
+                    className="w-full h-full border-none overflow-hidden"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe>
+                 <div className="absolute top-2 left-2 flex items-center gap-2 bg-background/80 text-foreground p-1 rounded-md">
+                  {link.icon}
+                </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {galleryImages.map((img, index) => (
-          <div key={index} className="group relative overflow-hidden rounded-lg">
-            <Image
-              src={img.imageUrl}
-              alt={img.description}
-              data-ai-hint={img.imageHint}
-              width={400}
-              height={500}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 
 const TestimonialsSection = () => (
   <section className="py-16 sm:py-24">
@@ -224,3 +226,5 @@ const Footer = () => (
     </div>
   </footer>
 );
+
+    
