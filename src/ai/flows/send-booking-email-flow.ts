@@ -1,4 +1,5 @@
 'use server';
+
 /**
  * @fileOverview This file defines a Genkit flow for sending booking confirmation emails.
  *
@@ -10,6 +11,7 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import {BookingData} from '@/lib/types';
+import {sendEmail, formatBookingEmailHtml} from '@/lib/email';
 
 const SendBookingEmailInputSchema = z.object({
     bookingDetails: z.any().describe('The booking details.'),
@@ -29,29 +31,6 @@ export async function sendBookingEmail(input: SendBookingEmailInput): Promise<Se
   return sendBookingEmailFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'sendBookingEmailPrompt',
-  input: {schema: SendBookingEmailInputSchema},
-  output: {schema: SendBookingEmailOutputSchema},
-  prompt: `You are an email sending service. You are sending a booking confirmation email.
-  
-  Booking Details:
-  Booking ID: {{bookingDetails.bookingId}}
-  Service: {{bookingDetails.service.name}}
-  Staff: {{bookingDetails.staff.name}}
-  Date: {{bookingDetails.date}}
-  Time: {{bookingDetails.time}}
-  Customer: {{bookingDetails.customer.name}}
-  
-  Send a confirmation email to the customer at {{customerEmail}} and a notification to the salon at {{salonEmail}}.
-  
-  The email to the customer should be a confirmation of their booking with all the details.
-  The email to the salon should be a notification of the new booking with all the details.
-  
-  Return { "success": true } if the emails are sent successfully. In a real app this would send an email. For now, we just log it.
-  `,
-});
-
 const sendBookingEmailFlow = ai.defineFlow(
   {
     name: 'sendBookingEmailFlow',
@@ -60,9 +39,31 @@ const sendBookingEmailFlow = ai.defineFlow(
   },
   async input => {
     console.log('Sending booking email with input:', input);
-    const {output} = await prompt(input);
-    console.log('Email sending simulation result:', output);
-    // In a real application, this is where you would integrate with an email service like SendGrid, Resend, etc.
-    return output || { success: false };
+    
+    try {
+      // Send email to customer
+      const customerEmailHtml = await formatBookingEmailHtml(input.bookingDetails, true);
+      const customerEmailSent = await sendEmail({
+        to: input.customerEmail,
+        subject: 'Your Appointment Confirmation',
+        html: customerEmailHtml
+      });
+      
+      // Send email to salon
+      const salonEmailHtml = await formatBookingEmailHtml(input.bookingDetails, false);
+      const salonEmailSent = await sendEmail({
+        to: input.salonEmail,
+        subject: 'New Appointment Booking',
+        html: salonEmailHtml
+      });
+      
+      const success = customerEmailSent && salonEmailSent;
+      console.log('Email sending result:', { customerEmailSent, salonEmailSent, success });
+      
+      return { success };
+    } catch (error) {
+      console.error('Error in email sending flow:', error);
+      return { success: false };
+    }
   }
 );

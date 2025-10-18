@@ -30,6 +30,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Production optimizations
+  swcMinify: true,
+  compress: true,
+  productionBrowserSourceMaps: false,
+  // Enable static exports where possible
+  output: 'standalone',
+  // Improve performance with React optimizations
+  reactStrictMode: true,
+  poweredByHeader: false,
 };
 
 export default nextConfig;
