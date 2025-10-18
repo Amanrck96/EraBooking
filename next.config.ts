@@ -31,7 +31,10 @@ const nextConfig: NextConfig = {
     ],
   },
   // Production optimizations
-  swcMinify: true,
+  compiler: {
+    // Use SWC minification
+    minify: true,
+  },
   compress: true,
   productionBrowserSourceMaps: false,
   // Enable static exports where possible

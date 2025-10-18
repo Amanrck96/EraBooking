@@ -8,6 +8,9 @@ import { CheckCircle2, CalendarPlus, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 
+// This ensures the page is rendered at runtime only, not during build
+export const dynamic = 'force-dynamic';
+
 export default function ConfirmationPage() {
   const [bookingId, setBookingId] = useState('');
   const searchParams = useSearchParams();
