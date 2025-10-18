@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
   // Production optimizations
   compiler: {
     // Use SWC minification
-    minify: true,
+    removeConsole: true,
   },
   compress: true,
   productionBrowserSourceMaps: false,
